@@ -2,6 +2,7 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] mats, String[][] park) {
+
         int N = park.length;        // 공원의 세로 크기 (행)
         int M = park[0].length;     // 공원의 가로 크기 (열)
 
