@@ -42,12 +42,11 @@ class Solution {
         // 가장 큰 정사각형이 최대 몇 크기인지 확인하고, mats 배열에서 가장 큰 돗자리 크기를 찾아 리턴
         for (int i = 0; i < mats.length; i++) {
             if (mats[i] <= maxSquareSize) {
-                return mats[i];  // 가능한 가장 큰 돗자리 크기 리턴
+                return mats[i];  // i
             }
         }
 
         // 돗자리를 깔 수 없는 경우
         return -1;
     }
-
 }
