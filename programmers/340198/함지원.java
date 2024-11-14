@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] mats, String[][] park) {
-        int answer = -1;
+        int answer=-1;
 
         // mats 배열을 내림차순으로 정렬
         Arrays.sort(mats);  // 오름차순 정렬
@@ -39,3 +39,4 @@ class Solution {
 
         return answer;
     }
+}
