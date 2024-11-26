@@ -1,2 +1,4 @@
 *.idea
 .prettierignore
+*.iml
+*.xml
