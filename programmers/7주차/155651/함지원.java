@@ -12,9 +12,14 @@ class Solution {
             }
         }
 
-        for (int i = 900; i < 1440; i++) {
+        for (int i = 0; i < 1440; i++) {
             answer = Math.max(answer, minutes[i]);
         }
         return answer;
+    }
+
+    public int minutesChange(String time) {
+        String[] hm = time.split(":");
+        return Integer.parseInt(hm[0]) * 60 + Integer.parseInt(hm[1]);
     }
 }
