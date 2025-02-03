@@ -7,11 +7,12 @@ class Solution {
 
         for (int t : tangerine) tangerines.put(t, tangerines.getOrDefault(t, 0) + 1);
 
-        LinkedList<Integer> list = new LinkedList<>(tangerines.values());
-        Collections.sort(list.reversed());
+        List<Integer> list = new ArrayList<>(tangerines.values());
+        Collections.sort(list, Comparator.reverseOrder());
 
-        for (Integer key : list) {
-            k -= tangerines.get(key);
+
+        for (Integer goods : list) {
+            k -= goods;
             answer++;
             if (k <= 0) break;
         }
