@@ -1,15 +1,11 @@
-# 50자 이하의 간단한 제목을 사용합니다.
-# ex) Add: 홍길동.java
-# ex) Refactor: 완전 탐색 -> 이분 탐색
-# ex) Style: 함수명 변경
+# ex) Add: gildong-00000.java
 
 ####################
-# Add: 소스 코드 파일(cpp) 추가
-# Refactor: 소스 코드 수정
-# Style: 코드 동작에 영향이 없는 수정
-# Chore: 그 외 기타 작업
+# Add: 
+# Refactor: 
+# Style: 
+# Chore: 
 ####################
-
 
 # 템플릿 사용 방법
 # 1. git add . 혹은 git add <파일명> 입력 
