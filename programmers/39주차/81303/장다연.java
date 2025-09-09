@@ -1,41 +1,55 @@
-import java.util.LinkedList;
-import java.util.Stack;
+//답 확인함
+
+import java.util.*;
 
 class Solution {
-
     public String solution(int n, int k, String[] cmd) {
-        String answer = "";
+        int[] prev = new int[n];
+        int[] next = new int[n];
+        for (int i = 0; i < n; i++) {
+            prev[i] = i - 1;
+            next[i] = i + 1;
+        }
+        next[n - 1] = -1;
 
-        int tablesize = n;
-        Stack<Integer> st = new Stack<>();
+        boolean[] removed = new boolean[n];
+        Deque<Integer> stack = new ArrayDeque<>();
+        int pointer = k;
 
-        for (String command : cmd) {
-            String[] commandSplit = command.split(" ");
-            if (commandSplit[0].equals("U")) {
-                k -= Integer.parseInt(commandSplit[1]);
-                if (k < 0) k = 0;
-            } else if (commandSplit[0].equals("D")) {
-                k += Integer.parseInt(commandSplit[1]);
-                if (k > tablesize - 1) k = tablesize - 1;
-            } else if (commandSplit[0].equals("C")) {
-                st.push(k);
-                tablesize--;
-                if(k == tablesize) k--;
-            } else {
-                int ret = st.pop();
-                if(k>=ret) k++;
-                tablesize++;
+        for (String c : cmd) {
+            char op = c.charAt(0);
+            if (op == 'U') {
+                int x = Integer.parseInt(c.substring(2));
+                for (int i = 0; i < x; i++) {
+                    pointer = prev[pointer];
+                }
+            } else if (op == 'D') {
+                int x = Integer.parseInt(c.substring(2));
+                for (int i = 0; i < x; i++) {
+                    pointer = next[pointer];
+                }
+            } else if (op == 'C') {
+                stack.push(pointer);
+                removed[pointer] = true;
+
+                if (prev[pointer] != -1) next[prev[pointer]] = next[pointer];
+                if (next[pointer] != -1) prev[next[pointer]] = prev[pointer];
+
+                if (next[pointer] != -1) pointer = next[pointer];
+                else pointer = prev[pointer];
+            } else if (op == 'Z') {
+                int restore = stack.pop();
+                removed[restore] = false;
+
+                if (prev[restore] != -1) next[prev[restore]] = restore;
+                if (next[restore] != -1) prev[next[restore]] = restore;
             }
         }
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < tablesize; i++) {
-            sb.append("O");
+        for (int i = 0; i < n; i++) {
+            sb.append(removed[i] ? 'X' : 'O');
         }
-        while(!st.empty()){
-            sb.insert(st.pop().intValue(),'X');
-        }
-        answer = sb.toString();
-        return answer;
+        return sb.toString();
     }
 }
